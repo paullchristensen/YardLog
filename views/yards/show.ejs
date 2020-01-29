@@ -1,0 +1,44 @@
+<%- include("../partials/header") %>
+
+<div class = "container">
+	<div class = "row">
+		<div class="col-md-3">
+			<p class="lead">YardLog</p>
+			<div class="list-group">
+				<li class="list-group-item active">Info 1</li>
+				<li class="list-group-item">Info 2</li>
+				<li class="list-group-item">Info 3</li>
+			</div>
+		</div>
+		<div class = "col-md-9">
+			<div class="thumbnail">
+				<div class="caption-full">
+				
+                    <h4><a><%= yard.name %></a></h4>
+                    <p><strong>Area: </strong><%= yard.area %></p>
+                    <p><strong>Latitude: </strong><%= yard.latitude %></p>
+                    <p><strong>Longtude: </strong><%= yard.longitude %></p>
+                    <p><strong>Land Owner: </strong><%= yard.landOwner %></p>
+					<p><strong>Description: </strong><%= yard.description %></p>
+					<p>
+						
+					</p>
+				
+					<a class ="btn btn-warning" href="/yards/<%= yard._id %>/edit">Edit</a>
+					<form class="delete-form" action="/yards/<%= yard._id %>?_method=DELETE"  method="POST">
+						<button class="btn btn-danger">Delete</button>
+					</form>
+				
+				</div>
+			</div>
+	
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<%- include("../partials/footer") %>
