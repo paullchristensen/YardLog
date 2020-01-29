@@ -45,8 +45,7 @@ router.post("/yards",  function(req, res){
 // SHOW ROUTE
 router.get("/yards/:id", function(req, res){
 	
-	//Yard.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
-	Yard.findById(req.params.id, function(err, foundYard){
+	Yard.findById(req.params.id).populate("comments").exec(function(err, foundYard){
 		if(err)
 			console.log(err);
 		else

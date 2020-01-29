@@ -3,9 +3,10 @@
 
 <div class = "container">
 
-	<header class="jumbotron">
+	<header class="jumbotron text-center">
 		<div>
-			<h1>Welcome to YardLog</h1>
+            
+			<h1 ><i class="fas fa-archive"></i>     Welcome to YardLog</h1>
 			<!-- <p>View yards</p> -->
 			<p>
 				<a class = "btn btn-primary btn-large" href="/yards/new">Add New Yard</a>
@@ -13,21 +14,27 @@
 		</div>
 	</header>
 
-	<div class ="row text-center" style="display:flex; flex-wrap: wrap;">
-		<%  yards.forEach(function(yard){ 	%>
-			<div class="col-md-3 col-sm-6">
-				<div class="thumbnail">
-					<div class="caption">
-						<h4><%= yard.name %>	</h4>
-					</div>
-					<p>
-						<a href="/yards/<%= yard._id %>" class="btn btn-primary">More Info</a>
-					</p>
-				</div>
-				
-			</div>
-		<% });	%>
-	</div>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Area</th>
+            <th scope="col">More Info</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%  var row = 1;
+                yards.forEach(function(yard){ 	%>
+            <tr>
+                <th scope="row"><%= row++; %></th>
+                <td><%= yard.name %></td>
+                <td><%= yard.area %></td>
+                <td><a href="/yards/<%= yard._id %>" class="btn btn-primary">More Info</a></td>
+            </tr>
+             <% });	%>
+        </tbody>
+      </table>
 </div>
 
 

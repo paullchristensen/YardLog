@@ -1,5 +1,6 @@
 var mongoose   = require("mongoose");
 var Yard       = require("./models/yard");
+var Comment   = require("./models/comment");
 
 var data = [
     {
@@ -39,12 +40,12 @@ function seedDB(){
          }
          console.log("removed yards!");
 
-        //  Comment.remove({}, function(err) {
-        //       if(err){
-        //           console.log(err);
-        //       }
-        //       console.log("removed comments!");
-              //add a few campgrounds
+          Comment.remove({}, function(err) {
+               if(err){
+                   console.log(err);
+               }
+               console.log("removed comments!");
+            //add a few yards
              data.forEach(function(seed){
                  Yard.create(seed, function(err, yard){
                      if(err){
@@ -52,23 +53,24 @@ function seedDB(){
                      } else {
                          console.log("added a yard");
                         // create a comment
-                        //  Comment.create(
-                        //      {
-                        //          text: "This place is great, but I wish there was internet",
+                          Comment.create(
+                              {
+                                  text: "This place is great, but I wish there was internet",
                         //          author: "Homer"
-                        //      }, function(err, comment){
-                        //          if(err){
-                        //              console.log(err);
-                        //          } else {
-                        //              campground.comments.push(comment);
-                        //              campground.save();
-                        //             console.log("Created new comment");
-                        //          }
-                        //  });
+                              }, function(err, comment){
+                                  if(err){
+                                    console.log(err);
+                                  } else {
+                                      yard.comments.push(comment);
+                                      yard.save();
+  
+                                }
+                          });
                      }
                  });
             });
-     }); 
+        }); 
+     });
   
  }
   

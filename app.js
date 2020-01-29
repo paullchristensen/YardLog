@@ -1,10 +1,12 @@
 var express           = require("express");
 var bodyParser        = require("body-parser");
-var indexRoutes       = require("./routes/index");
-var yardRoutes        = require("./routes/yards");
 var mongoose          = require("mongoose");
 var methodOverride    = require("method-override");
 var seedDB            = require("./seeds");
+
+var indexRoutes       = require("./routes/index");
+var yardRoutes        = require("./routes/yards");
+var commentRoutes     = require("./routes/comments");
 
 mongoose.connect("mongodb://localhost:27017/yardlog", {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -21,7 +23,7 @@ seedDB(); //seed the database
 //ROUTES
 app.use(indexRoutes);
 app.use(yardRoutes);
-
+app.use(commentRoutes);
 
 
 

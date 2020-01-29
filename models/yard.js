@@ -8,7 +8,13 @@ var yardSchema = new mongoose.Schema({
     description: String,
     landOwner: String,
     inUse: Boolean,
-	created: {type: Date, default: Date.now}
+    created: {type: Date, default: Date.now},
+    comments:[
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Comment"
+        }
+    ]
 });
 
 var Yard = mongoose.model("Yard", yardSchema);
