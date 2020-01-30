@@ -2,15 +2,27 @@
 
 <div class = "container">
 	<div class = "row">
-		<div class="col-md-3">
-			<p class="lead">YardLog</p>
-			<div class="list-group">
-				<li class="list-group-item active">Info 1</li>
-				<li class="list-group-item">Info 2</li>
-				<li class="list-group-item">Info 3</li>
+		<div class="col-md-5">
+			<div id="map">
+
 			</div>
+			<script>
+				// Initialize and add the map
+				function initMap() {
+				 var latitude = <%= yard.latitude %>;
+    			 var longitude = <%= yard.longitude %>;
+				  // The location of yard
+				  var yardLocation = {lat: latitude, lng: longitude};
+				  console.log(yardLocation);
+				  // The map, centered 
+				  var map = new google.maps.Map(document.getElementById('map'), {zoom: 16, center: yardLocation,mapTypeId: 'satellite'});
+				 
+				  // The marker, positioned at Uluru
+				  var marker = new google.maps.Marker({position: yardLocation, map: map});
+				}
+			</script>
 		</div>
-		<div class = "col-md-9">
+		<div class = "col-md-7">
 			<div class="thumbnail">
 				<div class="caption-full">
 				
@@ -56,6 +68,8 @@
 
 
 
-
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBWOJt7L128lpnmTMsah29GuWTOh0vuZk&callback=initMap">
+    </script>
 
 <%- include("../partials/footer") %>
