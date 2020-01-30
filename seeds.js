@@ -53,19 +53,19 @@ function seedDB(){
                      } else {
                          console.log("added a yard");
                         // create a comment
-                          Comment.create(
-                              {
-                                  text: "This place is great, but I wish there was internet",
-                        //          author: "Homer"
-                              }, function(err, comment){
-                                  if(err){
-                                    console.log(err);
-                                  } else {
-                                      yard.comments.push(comment);
-                                      yard.save();
+                        //   Comment.create(
+                        //       {
+                        //           text: "This place is great, but I wish there was internet",
+                        //           author: "Homer"
+                        //       }, function(err, comment){
+                        //           if(err){
+                        //             console.log(err);
+                        //           } else {
+                        //               yard.comments.push(comment);
+                        //               yard.save();
   
-                                }
-                          });
+                        //         }
+                        //   });
                      }
                  });
             });
