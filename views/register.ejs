@@ -1,15 +1,25 @@
 <%- include("./partials/header") %>
 
-<h1>
-	Sign up!
-</h1>
+<div class = "container">
 
+	<h1>Sign up!</h1>
 
+	<form action="/register" method="POST">
+	
 
-<form action="/register" method="POST">
-	<input type="text" name="username" placeholder="username">
-	<input type="password" name="password" placeholder="password">
-	<button>Submit</button>
-</form>
+		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
+		<p></p>
+		<input type="text" name="companyname" placeholder="company name">
+		<input type="password" name="companypassword" placeholder="company password">
+		<p></p>
+		<button>Submit</button>
+			
+		
+
+	</form>
+
+</div>
+
 
 <%- include("./partials/footer") %>

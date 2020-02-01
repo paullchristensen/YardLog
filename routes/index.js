@@ -2,6 +2,8 @@ var express   = require("express");
 var router    = express.Router();
 var passport  = require("passport");
 var User      = require("../models/user");
+var Company      = require("../models/company");
+var passwordHash = require('password-hash');
 
 
 //ROOT ROUTE
@@ -21,24 +23,48 @@ router.get("/register", function(req, res){
 //handing user sign up
 router.post("/register", function(req, res){
 	
-	var newUser = new User({username: req.body.username});
+	//Check that company exists
+	var companyName = req.body.companyname;
+	var companyPassword = req.body.companypassword;
+	Company.findOne({name: companyName}, function(err, company)
+	{
+		 if(err){
 	
-	User.register(newUser, req.body.password, function(err,user){
-		if(err)
-		{
-			req.flash("error", err.message);
-			return res.render("register");
-		}
-		else
-		{
-			passport.authenticate("local")(req, res, function(){
-                req.flash("success", "Welcome to YelpCamp " + user.username );
-                console.log("successful registration");
-				res.redirect("/yards");
-			});
-		}
+	 	 	return res.render("register",  {error: err.message});
+		 }
+		 else
+		 {
+			 //Verify company password
+		 	if(company && passwordHash.verify(companyPassword, company.password))
+			{
+				//Register new user
+			    var newUser = new User({username: req.body.username});
+				User.register(newUser, req.body.password, function(err,user){
+					if(err)
+					{
+						//req.flash("error", err.message);
+						return res.render("register", {error: err.message});
+					}
+					else
+					{
+						passport.authenticate("local")(req, res, function(){
+							//Associate user with company
+							user.company.id = company._id;
+							user.save();
+							req.flash("success", "Welcome to YardLog " + user.username );
+							console.log("successful registration");
+							res.redirect("/yards");
+						});
+					}
+				});
+		 	}
+		 	else
+			{
+				return res.render("register", {error: "Invalid company login!"});
+		 	
+			}
+		 }
 	});
-	
 });
 
 
@@ -51,8 +77,8 @@ router.get("/login", function(req, res){
 router.post("/login", passport.authenticate("local",
 	{
 		successRedirect: "/yards",
-		failureRedirect: "/login"
- 	}),function(req, res){
+		failureRedirect: "/login"																																					
+ 	}),function(req, res){																													
 	
 });
 

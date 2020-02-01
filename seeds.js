@@ -1,6 +1,8 @@
-var mongoose   = require("mongoose");
-var Yard       = require("./models/yard");
-var Comment   = require("./models/comment");
+var mongoose     = require("mongoose");
+var Yard         = require("./models/yard");
+var Comment      = require("./models/comment");
+var Company      = require("./models/company");
+var passwordHash = require('password-hash');
 
 var data = [
     {
@@ -33,44 +35,72 @@ var data = [
 ]
 
 function seedDB(){
-    //Remove all yards
-    Yard.remove({}, function(err){
-         if(err){
-             console.log(err);
-         }
-         console.log("removed yards!");
 
-          Comment.remove({}, function(err) {
-               if(err){
-                   console.log(err);
-               }
-               console.log("removed comments!");
-            //add a few yards
-             data.forEach(function(seed){
-                 Yard.create(seed, function(err, yard){
-                     if(err){
-                         console.log(err)
-                     } else {
-                         console.log("added a yard");
-                        // create a comment
-                        //   Comment.create(
-                        //       {
-                        //           text: "This place is great, but I wish there was internet",
-                        //           author: "Homer"
-                        //       }, function(err, comment){
-                        //           if(err){
+    //Remove all companies
+    Company.remove({}, function(err){
+        console.log("removed companies!");
+
+      
+    var hashedPassword = passwordHash.generate('mallaig2020');
+    Company.create({
+                    name: "CBR",
+                    password: hashedPassword,
+                },  function(err, company){
+                    if(err){
+                        console.log(err)
+                    } else {
+                        console.log("added a company");
+
+                        // //Remove all yards
+                        // Yard.remove({}, function(err){
+                        //     if(err){
+                        //         console.log(err);
+                        //     }
+                        //     console.log("removed yards!");
+
+                        //     Comment.remove({}, function(err) {
+                        //         if(err){
                         //             console.log(err);
-                        //           } else {
-                        //               yard.comments.push(comment);
-                        //               yard.save();
-  
                         //         }
-                        //   });
-                     }
-                 });
-            });
-        }); 
+                        //         console.log("removed comments!");
+                        //     //add a few yards
+                        //         data.forEach(function(seed){
+                        //             Yard.create(seed, function(err, yard){
+                        //                 if(err){
+                        //                     console.log(err)
+                        //                 } else {
+                        //                     console.log("added a yard");
+                        //                     //Associate user with company
+                        //                     yard.company.id = company._id;
+                        //                     yard.save();
+                        //                 // create a comment
+                        //                 //   Comment.create(
+                        //                 //       {
+                        //                 //           text: "This place is great, but I wish there was internet",
+                        //                 //           author: "Homer"
+                        //                 //       }, function(err, comment){
+                        //                 //           if(err){
+                        //                 //             console.log(err);
+                        //                 //           } else {
+                        //                 //               yard.comments.push(comment);
+                        //                 //               yard.save();
+
+                        //                 //         }
+                        //                 //   });
+                        //                 }
+                        //             });
+                        //     });
+                        // }); 
+                        // });
+
+
+
+
+                   }
+         });
      });
+
+    
   
  }
   

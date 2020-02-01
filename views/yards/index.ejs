@@ -24,7 +24,9 @@
           </tr>
         </thead>
         <tbody>
-            <%  var row = 1;
+            <%  
+              if(yards){
+                var row = 1;
                 yards.forEach(function(yard){ 	%>
             <tr>
                 <th scope="row"><%= row++; %></th>
@@ -32,7 +34,7 @@
                 <td><%= yard.area %></td>
                 <td><a href="/yards/<%= yard._id %>" class="btn btn-primary">More Info</a></td>
             </tr>
-             <% });	%>
+             <% })};	%>
         </tbody>
       </table>
 </div>

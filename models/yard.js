@@ -9,6 +9,13 @@ var yardSchema = new mongoose.Schema({
     landOwner: String,
     inUse: Boolean,
     created: {type: Date, default: Date.now},
+    company: {
+        id: {
+           type: mongoose.Schema.Types.ObjectId,
+           ref: "Company"
+        },
+        companyname: String
+    },
     author: {
         id: {
            type: mongoose.Schema.Types.ObjectId,
