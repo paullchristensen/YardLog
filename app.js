@@ -15,8 +15,17 @@ var flash                 = require("connect-flash");
 var User                  = require("./models/user");
 
 
-mongoose.connect("mongodb://localhost:27017/yardlog", {useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect("mongodb://localhost:27017/yardlog", {useNewUrlParser: true, useUnifiedTopology: true});
 
+mongoose.connect("mongodb+srv://Paul:123@cluster0-pxjjp.mongodb.net/test?retryWrites=true&w=majority",{
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true
+}).then(()=>{
+	console.log('ERROR:', err.message);
+}).catch(err=>{
+	console.log(err);
+});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs"); //so that .ejs is not needed in render page
