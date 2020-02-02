@@ -38,7 +38,9 @@ router.post("/register", function(req, res){
 		 	if(company && passwordHash.verify(companyPassword, company.password))
 			{
 				//Register new user
-			    var newUser = new User({username: req.body.username});
+				var isAdmin = false;
+				if(req.body.username === "paullchristensen@gmail.com")isAdmin = true;
+			    var newUser = new User({username: req.body.username, isAdmin: isAdmin});
 				User.register(newUser, req.body.password, function(err,user){
 					if(err)
 					{
