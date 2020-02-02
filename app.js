@@ -10,6 +10,7 @@ var	passportLocalMongoose = require("passport-local-mongoose");
 var indexRoutes           = require("./routes/index");
 var yardRoutes            = require("./routes/yards");
 var commentRoutes         = require("./routes/comments");
+var adminRoutes           = require("./routes/admin");
 var flash                 = require("connect-flash");
 var User                  = require("./models/user");
 
@@ -48,6 +49,7 @@ app.use(function(req, res, next){
 
 
 //ROUTES
+app.use(adminRoutes);
 app.use(indexRoutes);
 app.use(yardRoutes);
 app.use(commentRoutes);
