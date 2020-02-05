@@ -14,10 +14,11 @@
 		</div>
 	</header>
 
-    <table class="table">
+    <table class="table" id="yardTable">
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
+            <th scope="col"><button onclick="exportYards()">Export</button></th>
             <th scope="col">Name</th>
             <th scope="col">Area</th>
             <th scope="col">More Info</th>
@@ -30,6 +31,7 @@
                 yards.forEach(function(yard){ 	%>
             <tr>
                 <th scope="row"><%= row++; %></th>
+                <td>select</td>
                 <td><%= yard.name %></td>
                 <td><%= yard.area %></td>
                 <td><a href="/yards/<%= yard._id %>" class="btn btn-primary">More Info</a></td>
@@ -39,5 +41,26 @@
       </table>
 </div>
 
+<script>
+  function exportYards() {
 
+    var doc = new jsPDF({
+         orientation: 'p', 
+         unit: 'in', 
+         format: [612, 792]
+     });
+     
+    var rowCount =  $('#yardTable').find('tr').length -1;
+     
+        //var row = 1;
+        //yards.forEach(function(yard){
+       // doc.text(yard.name, 10,  row *10);
+       // row++;
+      //});
+    
+      //doc.text(rowCount, 10,  10);
+   
+   // doc.save('yards.pdf');
+  }
+</script>
 <%- include("../partials/footer") %>

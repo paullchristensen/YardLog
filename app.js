@@ -16,9 +16,9 @@ var User                  = require("./models/user");
 
 
 //mongoose.connect("mongodb://localhost:27017/yardlog", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://Paul:123@cluster0-pxjjp.mongodb.net/yardlog?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
 
-
-mongoose.connect("mongodb+srv://Paul:123@cluster0-pxjjp.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect("mongodb+srv://Paul:123@cluster0-pxjjp.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
 // mongoose.connect("mongodb+srv://Paul:123@cluster0-pxjjp.mongodb.net/test?retryWrites=true&w=majority",{
 // 	useNewUrlParser: true,
 // 	useUnifiedTopology: true,
