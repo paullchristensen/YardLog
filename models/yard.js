@@ -5,6 +5,7 @@ var yardSchema = new mongoose.Schema({
     area: String,
     latitude: Number,
     longitude: Number,
+    hives: Number,
     description: String,
     landOwner: String,
     inUse: Boolean,

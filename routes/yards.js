@@ -5,6 +5,32 @@ var Company    = require("../models/company");
 var middleware = require("../middleware/index.js");
 
 
+router.post("/yards-data", function(req, res){
+	//Find yards for the logged in user
+	if( req.user && req.user.company)
+	{
+		
+		Company.findById(req.user.company.id, function(err, foundCompany){
+		if(err)
+			console.log(err);
+		else{
+
+			Yard.find({"company.companyname": foundCompany.name}, function(err, allYards){
+				if(err)
+					console.log(err);
+				else{
+					res.send(allYards);			
+				}
+			});
+			}
+		});
+	}
+	else
+	{
+		res.send(null);
+	}
+});
+
 // INDEX ROUTE
 router.get("/yards", function(req, res){
 
@@ -18,6 +44,7 @@ router.get("/yards", function(req, res){
 		else{
 
 			Yard.find({"company.companyname": foundCompany.name}, function(err, allYards){
+				
 				if(err)
 					console.log(err);
 				else{
@@ -47,8 +74,9 @@ router.post("/yards",  middleware.isLoggedIn, function(req, res){
 	var longitude = req.body.longitude;
 	var landOwner = req.body.landOwner;
 	var desc = req.body.description;
+	var hives = req.body.hives;
 	
-	var newYard = {name: name,area: area , latitude: latitude, longitude: longitude, landOwner: landOwner, description: desc}
+	var newYard = {name: name,area: area , latitude: latitude, longitude: longitude, landOwner: landOwner, description: desc, hives: hives}
 
 	Yard.create(newYard, function(err, newlyCreated){
 			if(err)

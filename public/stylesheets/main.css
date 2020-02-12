@@ -3,14 +3,20 @@
 	display: inline;
 }
 
-
-#map {
+#map-yard {
 	height:  500px;  
 	width: 100%;  
-   }
+}
 
+#map-all-yards{
+	height:  400px;  
+	width: 100%;  
+}
 
 .select-all-export-col{
 	width: 230px;  
+}
 
+.btn-new-yard{
+	display: inline;
 }

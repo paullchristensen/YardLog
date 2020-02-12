@@ -2,8 +2,8 @@
 
 <div class="container">
 	<div class="row">
-		<h1 style="text-align: center">Add a New Comment to <%= yard.name %></h1>
 		<div style="width: 30%; margin: 25px auto;">
+			<h1 style="text-align: center">Add a New Comment to <%= yard.name %></h1>
 			<form action="/yards/<%= yard._id %>/comments" method="POST">
 				<div class="form-group">
 					<input class="form-control" type="text" name = "comment[text]" placeholder="text">
