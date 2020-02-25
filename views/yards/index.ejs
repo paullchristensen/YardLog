@@ -20,7 +20,7 @@
     data-toggle="table"
     data-url="/yards-data"
     data-pagination="true"
-    data-page-size="10"
+    data-page-size="All"
     data-page-list="[5, 10, 50, 100, All]"
     data-search="true"
     data-click-to-select="true"
@@ -69,7 +69,7 @@
     var yardLocation = {lat: latitude, lng: longitude};
 
     // The map, centered 
-    var map = new google.maps.Map(document.getElementById('map-all-yards'), {zoom: 10, center: yardLocation,mapTypeId: google.maps.MapTypeId.HYBRID});
+    var map = new google.maps.Map(document.getElementById('map-all-yards'), {zoom: 9, center: yardLocation,mapTypeId: google.maps.MapTypeId.HYBRID});
    
     <% if(yards){
       var row = 1;

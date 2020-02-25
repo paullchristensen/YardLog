@@ -6,25 +6,25 @@
 			<h1 style="text-align: center">Edit <%= yard.name %></h1>
 			<form action="/yards/<%= yard._id %>?_method=PUT" method="POST">
 				<div class="form-group">
-					<input class="form-control" type="text" name = "yard[name]" value="<%= yard.name %>">
+					<input class="form-control" type="text" name = "yard[name]" value="<%= yard.name %>" placeholder="name">
 				</div>
                 <div class="form-group">
-					<input class="form-control" type="text" name = "yard[area]" value="<%= yard.area %>">
+					<input class="form-control" type="text" name = "yard[area]" value="<%= yard.area %>" placeholder="area">
 				</div>
 				<div class="form-group">
-					<input class="form-control" type="text" name = "yard[hives]" value="<%= yard.hives %>">
+					<input class="form-control" type="text" name = "yard[hives]" value="<%= yard.hives %>" placeholder="number of hives">
                 </div>
                 <div class="form-group">
-					<input class="form-control" type="text" name = "yard[latitude]" value="<%= yard.latitude %>">
+					<input class="form-control" type="text" name = "yard[latitude]" value="<%= yard.latitude %>" placeholder="latitude">
                 </div>
                 <div class="form-group">
-					<input class="form-control" type="text" name = "yard[longitude]" value="<%= yard.longitude %>">
+					<input class="form-control" type="text" name = "yard[longitude]" value="<%= yard.longitude %>"> placeholder="longitude"
                 </div>
                 <div class="form-group">
-					<input class="form-control" type="text" name = "yard[landOwner]" value="<%= yard.landOwner %>">
+					<input class="form-control" type="text" name = "yard[landOwner]" value="<%= yard.landOwner %>" laceholder="land owner">
                 </div>
                 <div class="form-group">
-					<input class="form-control" type="text" name = "yard[description]" value="<%= yard.description %>">
+					<input class="form-control" type="text" name = "yard[description]" value="<%= yard.description %>" placeholder="description">
                 </div>
 				<div class="form-group">
 					<button  class="btn btn-lg btn-primary btn-block" >Submit</button>
